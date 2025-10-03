@@ -1,21 +1,22 @@
 import flet as ft
 import pandas as pd
 import itl_service as itl
+import config
+from models.settings import Configuracion
 def Login(page: ft.Page):
     
     # -------------------------- Funciones de Login -------------------------------
     def obtener_datos(e):
         """Obtiene los datos de login para ser reenviados y evaluados"""
-        user = Usuario.value.split()
-        pwd = Contrasena.value.split()
-        rmb = CheckRecordar.value
-        port = Puerto.value.upper()
-        ssp = DireccionSSP.value
-        dnm = Denominacion.value.upper()
-        
-        credenciales = itl.Usuario(user,pwd)
-        conexion = itl.Conexion(puerto = port, direccionSSP = ssp, denominacion = dnm)
-        
+        user = str(Usuario.value).strip()
+        pwd = str(Contrasena.value).strip()
+        rmb = bool(CheckRecordar.value)
+        port = str(Puerto.value).upper()
+        ssp = int(DireccionSSP.value)
+        dnm = str(Denominacion.value).upper().strip()
+        url = f'{str(Url.value).strip()}/' if not str(Url.value).endswith('/') else str(Url.value).strip()
+        datos = Configuracion(Username=user,Password=pwd,ComPort=port,CountryValue=dnm,SspAddress=ssp, Remember=rmb,BaseUrl=url)
+        config.guardar_configuracion(Configuracion)
         
     
     # ----------------------- Estilos de la vista --------------------------------
@@ -52,7 +53,30 @@ def Login(page: ft.Page):
         border=ft.InputBorder.OUTLINE,
         prefix_icon=ft.Icons.CABLE_OUTLINED,
         autofocus=True,
-        border_color= ft.Colors.AMBER_ACCENT_700
+        border_color= ft.Colors.AMBER_ACCENT_700,
+        
+    )
+    
+    # Url de ejecución de API
+    Url = ft.TextField(
+        label="Url de API",
+        hint_text="http(s)://example.com/",
+        border=ft.InputBorder.OUTLINE,
+        prefix_icon=ft.Icons.ROUTER_OUTLINED,
+        autofocus=True,
+        border_color= ft.Colors.AMBER_ACCENT_700,
+        
+    )
+
+    # Nombre dispositivo
+    Dispositivo = ft.DropdownM2(
+        label="Nombre del dispositivo",
+        border=ft.InputBorder.OUTLINE,
+        prefix_icon= ft.Icons.ON_DEVICE_TRAINING_ROUNDED,
+        autofocus= True,
+        value = "NV4000",
+        border_color= ft.Colors.AMBER_ACCENT_700,
+        options= [ft.DropdownOption(key="NV4000", text="NV4000"),ft.DropdownOption(key="SCS", text="SCS")]
     )
     
     # Selección de Denominacion
@@ -61,7 +85,7 @@ def Login(page: ft.Page):
         border=ft.InputBorder.OUTLINE,
         prefix_icon= ft.Icons.ATTACH_MONEY,
         autofocus= True,
-        enable_filter=True,
+        value = "COP",
         border_color= ft.Colors.AMBER_ACCENT_700,
         options= [ft.DropdownOption(key="COP", text="COP"),ft.DropdownOption(key="MXN", text="MXN")]
     )
@@ -84,7 +108,7 @@ def Login(page: ft.Page):
     # Input de Usuario
     Usuario = ft.TextField(
         label="Usuario",
-        hint_text="Ingresa tu usuario",
+        hint_text="Ingresa usuario",
         border=ft.InputBorder.OUTLINE,
         prefix_icon=ft.Icons.PERSON_OUTLINE,
         autofocus=True,
@@ -95,7 +119,7 @@ def Login(page: ft.Page):
     # Input de Contraseña
     Contrasena = ft.TextField(
         label="Contraseña",
-        hint_text="Ingresa tu contraseña",
+        hint_text="Ingresa contraseña",
         border=ft.InputBorder.OUTLINE,
         prefix_icon=ft.Icons.LOCK_OUTLINE,
         password=True,
@@ -105,7 +129,7 @@ def Login(page: ft.Page):
     
     # Checkbox para recordar el usuario
     CheckRecordar = ft.Checkbox(
-        label= "Recordar credenciales",
+        label= "Recordar Configuración",
         value=False,
         active_color=ft.Colors.AMBER_ACCENT_400
     )
@@ -115,26 +139,49 @@ def Login(page: ft.Page):
         text="Conectar",
         icon=ft.Icons.LOGIN,
         bgcolor=ft.Colors.AMBER_ACCENT_700,
-        # on_click=lambda e: None
         on_click=obtener_datos  
     )
+    
+    # Formulario responsive
+    Formulario = ft.ResponsiveRow(
+        controls=[
+            ft.Container(Usuario, col={"xs": 12, "md": 6}),
+            ft.Container(Contrasena, col={"xs": 12, "md": 6}),
+            ft.Divider(),
+            ft.Container(Puerto, col={"xs": 12, "md": 6}),
+            ft.Container(DireccionSSP, col={"xs": 12, "md": 6}),
+            ft.Container(Denominacion, col={"xs": 12, "md": 6}),
+            ft.Container(Dispositivo, col={"xs": 12, "md": 6}),
+            ft.Container(Url, col={"xs": 12, "md": 6}),
+            ft.Container(CheckRecordar, col={"xs": 12, "md": 6}),
+            ft.Container(BtnLogin, col={"xs": 12, "md": 6}),
+            
+        ],
+        spacing=12,
+        run_spacing=12,
+    )
 
-    # El contenedor concatena todo lo referente a los componentes
+    # Contenedor Principal
     contenedor = ft.Card(
         content=ft.Container(
             margin=10,
             padding=24,
-            alignment=ft.alignment.center,
+            alignment=ft.alignment.center_left,
             bgcolor=ft.Colors.WHITE,
-            width=420,
+            width=840,
             border_radius=16,
             content=ft.Column(
                 spacing=18,
                 horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
-                controls=[Titulo, Subtitulo,Puerto, DireccionSSP, Denominacion, Usuario, Contrasena, CheckRecordar, BtnLogin]
+                controls=[
+                    Titulo,
+                    Subtitulo,
+                    Formulario  
+                ]
             ),
-        ),
+        )
     )
+    
 
     page.add(contenedor)
     
