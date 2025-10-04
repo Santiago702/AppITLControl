@@ -181,3 +181,9 @@ def cargar_configuracion() -> st.Configuracion:
         datos_usuario.Remember = config_cargada["Remember"]
         
     return datos_usuario
+
+def obtener_logs() -> str:
+    "Retorna la ruta de Logs donde se correrá la API"
+    rutas_app = obtener_ruta_configuracion()
+    return rutas_app["FileLogPath"]
+        

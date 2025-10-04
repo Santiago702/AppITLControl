@@ -2,11 +2,12 @@ import flet as ft
 import pandas as pd
 import itl_service as itl
 import config
+from views.loading import Loading
 from models.settings import Configuracion
-def Login(page: ft.Page):
+def Login(page : ft.Page) : 
     
     # -------------------------- Funciones de Login -------------------------------
-    def iniciar_sesion(e):
+    def iniciar_sesion(e) : 
         """Obtiene los datos de login para ser reenviados y evaluados"""
         user = str(Usuario.value).strip()
         pwd = str(Contrasena.value).strip()
@@ -16,12 +17,13 @@ def Login(page: ft.Page):
         dnm = str(Denominacion.value).upper().strip()
         name = str(Dispositivo.value).upper().strip()
         url = f'{str(Url.value).strip()}/' if not str(Url.value).endswith('/') else str(Url.value).strip()
-        datos = Configuracion(Username=user,Password=pwd,ComPort=port,CountryValue=dnm,SspAddress=ssp, Remember=rmb,BaseUrl=url, DeviceName = name)
-        
+        datos = Configuracion(Username = user,Password = pwd,ComPort = port,CountryValue = dnm,SspAddress = ssp, Remember = rmb,BaseUrl = url, DeviceName = name)
+        page.clean()
+        Loading(page,datos)
     
     # ----------------------- Estilos de la vista --------------------------------
     page.fonts = {
-        "Home": "fonts/Home Office.otf",
+        "Home" : "fonts/Home Office.otf",
         "Weight" : "fonts/Weight.ttf"
     }
     page.theme_mode = ft.ThemeMode.LIGHT
@@ -32,155 +34,155 @@ def Login(page: ft.Page):
 
     sesion_previa = config.sesion_previa()
     config_inicial = Configuracion()
-    if sesion_previa:
+    if sesion_previa : 
         config_inicial = config.cargar_configuracion()
     
     # Texto de título
     Titulo = ft.Text(
-        value="ITL Tester",
-        font_family="Weight",
-        size=60,
-        color=ft.Colors.AMBER_ACCENT_700,
-        text_align=ft.TextAlign.CENTER
+        value = "ITL Tester",
+        font_family = "Weight",
+        size = 60,
+        color = ft.Colors.AMBER_ACCENT_700,
+        text_align = ft.TextAlign.CENTER
     )
 
     # Subtitulo -> Label
     Subtitulo = ft.Text(
-        value="Ingresa las credenciales de tu dispositivo ITL",
-        color=ft.Colors.BLUE_GREY_600,
-        text_align=ft.TextAlign.CENTER
+        value = "Ingresa las credenciales de tu dispositivo ITL",
+        color = ft.Colors.BLUE_GREY_600,
+        text_align = ft.TextAlign.CENTER
     )
 
     # Input de Puerto de comunicación
     Puerto = ft.TextField(
-        label="Puerto",
+        label = "Puerto",
         value = config_inicial.ComPort,
-        hint_text="Ingresa Puerto de Comunicación",
-        border=ft.InputBorder.OUTLINE,
-        prefix_icon=ft.Icons.CABLE_OUTLINED,
-        autofocus=True,
-        border_color= ft.Colors.AMBER_ACCENT_700,
+        hint_text = "Ingresa Puerto de Comunicación",
+        border = ft.InputBorder.OUTLINE,
+        prefix_icon = ft.Icons.CABLE_OUTLINED,
+        autofocus = True,
+        border_color = ft.Colors.AMBER_ACCENT_700,
         
     )
     
     # Url de ejecución de API
     Url = ft.TextField(
-        label="Url de API",
-        hint_text="http(s)://example.com/",
+        label = "Url de API",
+        hint_text = "http(s) : //example.com/",
         value = config_inicial.BaseUrl,
-        border=ft.InputBorder.OUTLINE,
-        prefix_icon=ft.Icons.ROUTER_OUTLINED,
-        autofocus=True,
-        border_color= ft.Colors.AMBER_ACCENT_700,
+        border = ft.InputBorder.OUTLINE,
+        prefix_icon = ft.Icons.ROUTER_OUTLINED,
+        autofocus = True,
+        border_color = ft.Colors.AMBER_ACCENT_700,
         
     )
 
     # Nombre dispositivo
     Dispositivo = ft.DropdownM2(
-        label="Nombre del dispositivo",
-        border=ft.InputBorder.OUTLINE,
-        prefix_icon= ft.Icons.ON_DEVICE_TRAINING_ROUNDED,
-        autofocus= True,
+        label = "Nombre del dispositivo",
+        border = ft.InputBorder.OUTLINE,
+        prefix_icon = ft.Icons.ON_DEVICE_TRAINING_ROUNDED,
+        autofocus = True,
         value = config_inicial.DeviceName,
-        border_color= ft.Colors.AMBER_ACCENT_700,
-        options= [ft.DropdownOption(key="NV4000", text="NV4000"),ft.DropdownOption(key="SCS", text="SCS")]
+        border_color = ft.Colors.AMBER_ACCENT_700,
+        options = [ft.DropdownOption(key = "NV4000", text = "NV4000"),ft.DropdownOption(key = "SCS", text = "SCS")]
     )
     
     # Selección de Denominacion
     Denominacion = ft.DropdownM2(
-        label="Denominación de Moneda",
-        border=ft.InputBorder.OUTLINE,
-        prefix_icon= ft.Icons.ATTACH_MONEY,
-        autofocus= True,
+        label = "Denominación de Moneda",
+        border = ft.InputBorder.OUTLINE,
+        prefix_icon = ft.Icons.ATTACH_MONEY,
+        autofocus = True,
         value = config_inicial.CountryValue,
-        border_color= ft.Colors.AMBER_ACCENT_700,
-        options= [ft.DropdownOption(key="COP", text="COP"),ft.DropdownOption(key="MXN", text="MXN")]
+        border_color = ft.Colors.AMBER_ACCENT_700,
+        options = [ft.DropdownOption(key = "COP", text = "COP"),ft.DropdownOption(key = "MXN", text = "MXN")]
     )
     # Direccion SSP del dispositivo
     DireccionSSP = ft.TextField(
-        label="Direccion SSP",
-        hint_text="Ingresa numero de Direccion SSP",
-        border=ft.InputBorder.OUTLINE,
-        prefix_icon=ft.Icons.CALL_SPLIT_OUTLINED,
-        autofocus=True,
-        value= config_inicial.SspAddress,
-        border_color= ft.Colors.AMBER_ACCENT_700,
-        keyboard_type=ft.KeyboardType.NUMBER,
-        input_filter=ft.InputFilter(
-                allow=True,
-                regex_string=r"^[0-9]*$",  
-                replacement_string="",
+        label = "Direccion SSP",
+        hint_text = "Ingresa numero de Direccion SSP",
+        border = ft.InputBorder.OUTLINE,
+        prefix_icon = ft.Icons.CALL_SPLIT_OUTLINED,
+        autofocus = True,
+        value = config_inicial.SspAddress,
+        border_color = ft.Colors.AMBER_ACCENT_700,
+        keyboard_type = ft.KeyboardType.NUMBER,
+        input_filter = ft.InputFilter(
+                allow = True,
+                regex_string = r"^[0-9]*$",  
+                replacement_string = "",
         ),
     )
     
     # Input de Usuario
     Usuario = ft.TextField(
-        label="Usuario",
-        hint_text="Ingresa usuario",
-        border=ft.InputBorder.OUTLINE,
-        prefix_icon=ft.Icons.PERSON_OUTLINE,
-        autofocus=True,
+        label = "Usuario",
+        hint_text = "Ingresa usuario",
+        border = ft.InputBorder.OUTLINE,
+        prefix_icon = ft.Icons.PERSON_OUTLINE,
+        autofocus = True,
         value = config_inicial.Username,
-        border_color= ft.Colors.AMBER_ACCENT_700
+        border_color = ft.Colors.AMBER_ACCENT_700
     )
 
     # Input de Contraseña
     Contrasena = ft.TextField(
-        label="Contraseña",
-        hint_text="Ingresa contraseña",
-        border=ft.InputBorder.OUTLINE,
-        prefix_icon=ft.Icons.LOCK_OUTLINE,
-        password=True,
+        label = "Contraseña",
+        hint_text = "Ingresa contraseña",
+        border = ft.InputBorder.OUTLINE,
+        prefix_icon = ft.Icons.LOCK_OUTLINE,
+        password = True,
         value = config_inicial.Password,
-        can_reveal_password=True,
-        border_color= ft.Colors.AMBER_ACCENT_700
+        can_reveal_password = True,
+        border_color = ft.Colors.AMBER_ACCENT_700
     )
     
     # Checkbox para recordar el usuario
     CheckRecordar = ft.Checkbox(
-        label= "Recordar Configuración",
-        value=config_inicial.Remember,
-        active_color=ft.Colors.AMBER_ACCENT_400
+        label = "Recordar Configuración",
+        value = config_inicial.Remember,
+        active_color = ft.Colors.AMBER_ACCENT_400
     )
     
     # Boton que inicia sesion
     BtnLogin = ft.FilledButton(
-        text="Conectar",
-        icon=ft.Icons.LOGIN,
-        bgcolor=ft.Colors.AMBER_ACCENT_700,
-        on_click=iniciar_sesion  
+        text = "Conectar",
+        icon = ft.Icons.LOGIN,
+        bgcolor = ft.Colors.AMBER_ACCENT_700,
+        on_click = iniciar_sesion  
     )
     
     # Formulario responsive
     Formulario = ft.ResponsiveRow(
-        controls=[
-            ft.Container(Usuario, col={"xs": 12, "md": 6}),
-            ft.Container(Contrasena, col={"xs": 12, "md": 6}),
+        controls = [
+            ft.Container(Usuario, col = {"xs" : 12, "md" : 6}),
+            ft.Container(Contrasena, col = {"xs" : 12, "md" : 6}),
             ft.Divider(),
-            ft.Container(Puerto, col={"xs": 12, "md": 6}),
-            ft.Container(DireccionSSP, col={"xs": 12, "md": 6}),
-            ft.Container(Denominacion, col={"xs": 12, "md": 6}),
-            ft.Container(Dispositivo, col={"xs": 12, "md": 6}),
-            ft.Container(Url, col={"xs": 12, "md": 6}),
-            ft.Container(CheckRecordar, col={"xs": 12, "md": 6})
+            ft.Container(Puerto, col = {"xs" : 12, "md" : 6}),
+            ft.Container(DireccionSSP, col = {"xs" : 12, "md" : 6}),
+            ft.Container(Denominacion, col = {"xs" : 12, "md" : 6}),
+            ft.Container(Dispositivo, col = {"xs" : 12, "md" : 6}),
+            ft.Container(Url, col = {"xs" : 12, "md" : 6}),
+            ft.Container(CheckRecordar, col = {"xs" : 12, "md" : 6})
         ],
-        spacing=12,
-        run_spacing=12,
+        spacing = 12,
+        run_spacing = 12,
     )
 
     # Contenedor Principal
     contenedor = ft.Card(
-        content=ft.Container(
-            margin=10,
-            padding=24,
-            alignment=ft.alignment.center_left,
-            bgcolor=ft.Colors.WHITE,
-            width=840,
-            border_radius=16,
-            content=ft.Column(
-                spacing=18,
-                horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
-                controls=[
+        content = ft.Container(
+            margin = 10,
+            padding = 24,
+            alignment = ft.alignment.center_left,
+            bgcolor = ft.Colors.WHITE,
+            width = 840,
+            border_radius = 16,
+            content = ft.Column(
+                spacing = 18,
+                horizontal_alignment = ft.CrossAxisAlignment.STRETCH,
+                controls = [
                     Titulo,
                     Subtitulo,
                     Formulario ,
