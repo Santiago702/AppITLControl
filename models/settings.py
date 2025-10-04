@@ -21,8 +21,8 @@ class Configuracion:
     Password : str = ""
     ComPort : str = ""
     SspAddress : int = 0
-    CountryValue : str = ""
-    deviceName : str = ""
+    CountryValue : str = "COP"
+    DeviceName : str = "NV4000"
     BaseUrl : str = ""
     BearerToken : str = ""
     Remember : bool = False

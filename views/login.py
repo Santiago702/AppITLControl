@@ -6,7 +6,7 @@ from models.settings import Configuracion
 def Login(page: ft.Page):
     
     # -------------------------- Funciones de Login -------------------------------
-    def obtener_datos(e):
+    def iniciar_sesion(e):
         """Obtiene los datos de login para ser reenviados y evaluados"""
         user = str(Usuario.value).strip()
         pwd = str(Contrasena.value).strip()
@@ -14,9 +14,9 @@ def Login(page: ft.Page):
         port = str(Puerto.value).upper()
         ssp = int(DireccionSSP.value)
         dnm = str(Denominacion.value).upper().strip()
+        name = str(Dispositivo.value).upper().strip()
         url = f'{str(Url.value).strip()}/' if not str(Url.value).endswith('/') else str(Url.value).strip()
-        datos = Configuracion(Username=user,Password=pwd,ComPort=port,CountryValue=dnm,SspAddress=ssp, Remember=rmb,BaseUrl=url)
-        config.guardar_configuracion(Configuracion)
+        datos = Configuracion(Username=user,Password=pwd,ComPort=port,CountryValue=dnm,SspAddress=ssp, Remember=rmb,BaseUrl=url, DeviceName = name)
         
     
     # ----------------------- Estilos de la vista --------------------------------
@@ -30,6 +30,11 @@ def Login(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.bgcolor = ft.Colors.AMBER_ACCENT_700
 
+    sesion_previa = config.sesion_previa()
+    config_inicial = Configuracion()
+    if sesion_previa:
+        config_inicial = config.cargar_configuracion()
+    
     # Texto de título
     Titulo = ft.Text(
         value="ITL Tester",
@@ -49,6 +54,7 @@ def Login(page: ft.Page):
     # Input de Puerto de comunicación
     Puerto = ft.TextField(
         label="Puerto",
+        value = config_inicial.ComPort,
         hint_text="Ingresa Puerto de Comunicación",
         border=ft.InputBorder.OUTLINE,
         prefix_icon=ft.Icons.CABLE_OUTLINED,
@@ -61,6 +67,7 @@ def Login(page: ft.Page):
     Url = ft.TextField(
         label="Url de API",
         hint_text="http(s)://example.com/",
+        value = config_inicial.BaseUrl,
         border=ft.InputBorder.OUTLINE,
         prefix_icon=ft.Icons.ROUTER_OUTLINED,
         autofocus=True,
@@ -74,7 +81,7 @@ def Login(page: ft.Page):
         border=ft.InputBorder.OUTLINE,
         prefix_icon= ft.Icons.ON_DEVICE_TRAINING_ROUNDED,
         autofocus= True,
-        value = "NV4000",
+        value = config_inicial.DeviceName,
         border_color= ft.Colors.AMBER_ACCENT_700,
         options= [ft.DropdownOption(key="NV4000", text="NV4000"),ft.DropdownOption(key="SCS", text="SCS")]
     )
@@ -85,7 +92,7 @@ def Login(page: ft.Page):
         border=ft.InputBorder.OUTLINE,
         prefix_icon= ft.Icons.ATTACH_MONEY,
         autofocus= True,
-        value = "COP",
+        value = config_inicial.CountryValue,
         border_color= ft.Colors.AMBER_ACCENT_700,
         options= [ft.DropdownOption(key="COP", text="COP"),ft.DropdownOption(key="MXN", text="MXN")]
     )
@@ -96,6 +103,7 @@ def Login(page: ft.Page):
         border=ft.InputBorder.OUTLINE,
         prefix_icon=ft.Icons.CALL_SPLIT_OUTLINED,
         autofocus=True,
+        value= config_inicial.SspAddress,
         border_color= ft.Colors.AMBER_ACCENT_700,
         keyboard_type=ft.KeyboardType.NUMBER,
         input_filter=ft.InputFilter(
@@ -112,9 +120,9 @@ def Login(page: ft.Page):
         border=ft.InputBorder.OUTLINE,
         prefix_icon=ft.Icons.PERSON_OUTLINE,
         autofocus=True,
+        value = config_inicial.Username,
         border_color= ft.Colors.AMBER_ACCENT_700
     )
-
 
     # Input de Contraseña
     Contrasena = ft.TextField(
@@ -123,6 +131,7 @@ def Login(page: ft.Page):
         border=ft.InputBorder.OUTLINE,
         prefix_icon=ft.Icons.LOCK_OUTLINE,
         password=True,
+        value = config_inicial.Password,
         can_reveal_password=True,
         border_color= ft.Colors.AMBER_ACCENT_700
     )
@@ -130,7 +139,7 @@ def Login(page: ft.Page):
     # Checkbox para recordar el usuario
     CheckRecordar = ft.Checkbox(
         label= "Recordar Configuración",
-        value=False,
+        value=config_inicial.Remember,
         active_color=ft.Colors.AMBER_ACCENT_400
     )
     
@@ -139,7 +148,7 @@ def Login(page: ft.Page):
         text="Conectar",
         icon=ft.Icons.LOGIN,
         bgcolor=ft.Colors.AMBER_ACCENT_700,
-        on_click=obtener_datos  
+        on_click=iniciar_sesion  
     )
     
     # Formulario responsive
@@ -153,9 +162,7 @@ def Login(page: ft.Page):
             ft.Container(Denominacion, col={"xs": 12, "md": 6}),
             ft.Container(Dispositivo, col={"xs": 12, "md": 6}),
             ft.Container(Url, col={"xs": 12, "md": 6}),
-            ft.Container(CheckRecordar, col={"xs": 12, "md": 6}),
-            ft.Container(BtnLogin, col={"xs": 12, "md": 6}),
-            
+            ft.Container(CheckRecordar, col={"xs": 12, "md": 6})
         ],
         spacing=12,
         run_spacing=12,
@@ -176,7 +183,8 @@ def Login(page: ft.Page):
                 controls=[
                     Titulo,
                     Subtitulo,
-                    Formulario  
+                    Formulario ,
+                    BtnLogin 
                 ]
             ),
         )
