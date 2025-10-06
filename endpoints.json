@@ -1,0 +1,327 @@
+[
+  {
+    "nombre": "Aceptar billete retenido",
+    "descripcion": "Acepta el billete o moneda que está en espera (escrow).",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Generar acceso",
+    "descripcion": "Obtiene un token de autenticación para usar la API.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Cancelar billetes retenidos",
+    "descripcion": "Devuelve los billetes almacenados en espera (multi-escrow).",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Limpiar niveles de caja",
+    "descripcion": "Borra el registro de billetes/monedas almacenados en la caja.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Limpiar niveles de billetes",
+    "descripcion": "Borra los niveles de billetes en la caja.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Confirmar billetes retenidos",
+    "descripcion": "Guarda definitivamente los billetes en espera (multi-escrow).",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Error de lectura COM",
+    "descripcion": "Consulta errores del puerto de comunicación.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Desconectar dispositivo",
+    "descripcion": "Cierra la comunicación con el dispositivo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Deshabilitar aceptación",
+    "descripcion": "Impide que el dispositivo acepte billetes o monedas.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Deshabilitar pago",
+    "descripcion": "Desactiva la función de pago o devolución de dinero.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Entregar monto solicitado",
+    "descripcion": "Ordena al dispositivo entregar una cantidad específica de dinero.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Habilitar aceptación",
+    "descripcion": "Permite que el dispositivo acepte billetes o monedas.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Activar mecanismo de monedas",
+    "descripcion": "Activa el módulo de monedas o alimentador si está disponible.",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Habilitar pago",
+    "descripcion": "Activa la función de pago o devolución de dinero.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Activar módulo de pago",
+    "descripcion": "Activa un módulo específico de payout o dispensador.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Consultar niveles",
+    "descripcion": "Muestra los niveles actuales de billetes o monedas almacenadas.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Obtener datos de código",
+    "descripcion": "Obtiene el último código de barras leído.",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Ver configuración del lector",
+    "descripcion": "Muestra la configuración actual del lector de códigos.",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Ver niveles de caja",
+    "descripcion": "Consulta los niveles actuales de la caja (cantidad por denominación).",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Consultar aceptación de monedas",
+    "descripcion": "Devuelve qué monedas acepta el dispositivo.",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Obtener información completa",
+    "descripcion": "Muestra toda la información del dispositivo (serie, firmware, estado, etc.).",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver contadores",
+    "descripcion": "Muestra el número de billetes aceptados, rechazados o dispensados.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver asignación de billetes",
+    "descripcion": "Muestra cómo están asignadas las denominaciones (canal, reciclador, etc.).",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Consultar estado del dispositivo",
+    "descripcion": "Muestra el estado actual del dispositivo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver estado de descarga",
+    "descripcion": "Consulta el estado de una descarga en curso.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Consultar código de error",
+    "descripcion": "Devuelve códigos de error globales del dispositivo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver opciones del hopper",
+    "descripcion": "Muestra las configuraciones del módulo de monedas (hopper).",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Ver último código de rechazo",
+    "descripcion": "Indica por qué se rechazó el último billete.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver estado del elevador",
+    "descripcion": "Consulta el estado del elevador interno (si aplica).",
+    "dispositivos": "NV4000"
+  },
+  {
+    "nombre": "Consultar capacidad de retención",
+    "descripcion": "Indica cuántos billetes pueden mantenerse en multi-escrow.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver valor retenido",
+    "descripcion": "Muestra la cantidad y denominaciones retenidas en multi-escrow.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver niveles de billetes en caja",
+    "descripcion": "Muestra los niveles de billetes dentro de la caja.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Consultar cantidad de pagos",
+    "descripcion": "Devuelve el número total de operaciones de pago realizadas.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Consultar modo de recarga",
+    "descripcion": "Muestra el modo actual del cassette de recarga.",
+    "dispositivos": "NV4000"
+  },
+  {
+    "nombre": "Ver información de servicio",
+    "descripcion": "Muestra información general del servicio y mantenimiento.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Información del módulo",
+    "descripcion": "Devuelve datos de servicio de un módulo específico.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver datos de reconocimiento",
+    "descripcion": "Muestra datos sobre los billetes y monedas reconocidos (dataset).",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Ver rutas del clasificador",
+    "descripcion": "Muestra la configuración actual del clasificador de billetes.",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Detener pago",
+    "descripcion": "Detiene cualquier operación de pago en curso.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Registrar datos técnicos",
+    "descripcion": "Activa o desactiva el registro de datos internos del dispositivo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Abrir conexión",
+    "descripcion": "Establece la comunicación inicial con el dispositivo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Modo de recarga",
+    "descripcion": "Activa o desactiva el modo de rellenado para mantenimiento.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Reponer efectivo",
+    "descripcion": "Mueve billetes del cassette de recarga hacia los módulos de pago.",
+    "dispositivos": "NV4000"
+  },
+  {
+    "nombre": "Reiniciar dispositivo",
+    "descripcion": "Reinicia el dispositivo con sus configuraciones de fábrica.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Devolver billete retenido",
+    "descripcion": "Devuelve el billete o moneda en espera (escrow).",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Enviar comando personalizado",
+    "descripcion": "Envía un comando técnico personalizado al dispositivo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Aceptar automáticamente",
+    "descripcion": "Activa o desactiva la aceptación automática de billetes en espera.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Configurar lector de códigos",
+    "descripcion": "Ajusta las opciones del lector de códigos de barras o QR.",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Configurar niveles de caja",
+    "descripcion": "Actualiza los niveles de billetes o monedas en la caja.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Límite de pago por caja",
+    "descripcion": "Define la cantidad máxima de billetes que puede pagar cada reciclador.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Inhabilitar denominaciones",
+    "descripcion": "Define qué valores de billetes no serán aceptados.",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Establecer nivel de billetes",
+    "descripcion": "Ajusta manualmente el nivel de una denominación específica.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Configurar ruta de billetes",
+    "descripcion": "Asigna la ruta (payout o caja) a una denominación.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Configurar hopper",
+    "descripcion": "Ajusta opciones internas del módulo de monedas (hopper).",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Definir capacidad de retención",
+    "descripcion": "Configura cuántos billetes pueden mantenerse en espera.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Establecer contador de rechazos",
+    "descripcion": "Configura el conteo de billetes rechazados.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Definir límite de pago",
+    "descripcion": "Establece el máximo de monedas o billetes que puede pagar el dispositivo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Reiniciar mantenimiento",
+    "descripcion": "Reinicia la información de mantenimiento del dispositivo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Configurar rutas del clasificador",
+    "descripcion": "Configura la ruta de billetes en el clasificador.",
+    "dispositivos": "SCS"
+  },
+  {
+    "nombre": "Vaciado inteligente",
+    "descripcion": "Vacía automáticamente los módulos según las reglas del sistema.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Iniciar dispositivo",
+    "descripcion": "Arranca el servicio interno que mantiene el dispositivo activo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Iniciar descarga",
+    "descripcion": "Comienza la descarga de un archivo o actualización.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Detener dispositivo",
+    "descripcion": "Detiene el servicio interno sin desconectarlo.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Actualizar credenciales",
+    "descripcion": "Cambia el usuario y la contraseña de autenticación.",
+    "dispositivos": "ALL"
+  },
+  {
+    "nombre": "Actualizar base de billetes",
+    "descripcion": "Actualiza la base de datos de billetes o monedas reconocidos.",
+    "dispositivos": "ALL"
+  }
+]

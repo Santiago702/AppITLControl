@@ -1,11 +1,14 @@
 import flet as ft
 import pandas as pd
 import itl_service as itl
-import config
+import config, conn
+import logging
 from views.loading import Loading
+from views.start import Starting
 from models.settings import Configuracion
 def Login(page : ft.Page) : 
     
+    logger = logging.getLogger("Login")
     # -------------------------- Funciones de Login -------------------------------
     def iniciar_sesion(e) : 
         """Obtiene los datos de login para ser reenviados y evaluados"""
@@ -16,10 +19,19 @@ def Login(page : ft.Page) :
         ssp = int(DireccionSSP.value)
         dnm = str(Denominacion.value).upper().strip()
         name = str(Dispositivo.value).upper().strip()
-        url = f'{str(Url.value).strip()}/' if not str(Url.value).endswith('/') else str(Url.value).strip()
+        url = f'{str(Url.value).strip().lower()}/' if not str(Url.value).endswith('/') else str(Url.value).strip().lower()
         datos = Configuracion(Username = user,Password = pwd,ComPort = port,CountryValue = dnm,SspAddress = ssp, Remember = rmb,BaseUrl = url, DeviceName = name)
-        page.clean()
-        Loading(page,datos)
+        conexion = conn.Dispositivo(datos)
+        logger.info(f"Validando usuario : {datos}")
+        if not conexion.autenticar():
+            Aviso.value = "Credenciales Incorrectas"
+            Aviso.visible = True
+            page.update()
+        else:
+            logging.info("Autenticado: Cargando vista")
+            config.guardar_configuracion(datos)
+            page.clean()
+            Starting(page,datos)
     
     # ----------------------- Estilos de la vista --------------------------------
     page.fonts = {
@@ -53,6 +65,16 @@ def Login(page : ft.Page) :
         text_align = ft.TextAlign.CENTER
     )
 
+    # Aviso de usuario o contraseña incorrecta
+    Aviso = ft.Text(
+        value = "",
+        text_align = ft.TextAlign.CENTER,
+        font_family = "Weight",
+        color = ft.Colors.RED,
+        size = 20,
+        visible= False
+    )
+    
     # Input de Puerto de comunicación
     Puerto = ft.TextField(
         label = "Puerto",
@@ -186,6 +208,7 @@ def Login(page : ft.Page) :
                     Titulo,
                     Subtitulo,
                     Formulario ,
+                    Aviso,
                     BtnLogin 
                 ]
             ),

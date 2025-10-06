@@ -6,7 +6,6 @@ from typing import Any, Dict
 from models import settings as st
 
 logger = logging.getLogger("Config")
-logger.setLevel(logging.DEBUG)  # o el nivel que prefieras
 
 ruta_config = "settings.json"
 
@@ -76,8 +75,6 @@ def guardar_configuracion(config: st.Configuracion):
     Args:
         config (Configuracion : dataclass) : Configuración inicial con los datos de conexion
     """
-    print("--------------------------------")
-    print(config)
     logger.info("Guardando configuracion")
     rutas_app = obtener_ruta_configuracion()
 
@@ -90,31 +87,31 @@ def guardar_configuracion(config: st.Configuracion):
         raise
     
     # Guarda configuración solo si se desea ser recordado
-    if config.Remember : 
-        
-        archivo_settings = os.path.join(rutas_app["FolderSettingsPath"], "settings.json")
 
-        # Preparar el objeto a serializar
-        try:
-            if is_dataclass(config):
-                datos_a_guardar = asdict(config)
-                
-            elif isinstance(config, dict):
-                datos_a_guardar = config
+    
+    archivo_settings = os.path.join(rutas_app["FolderSettingsPath"], "settings.json")
+
+    # Preparar el objeto a serializar
+    try:
+        if is_dataclass(config):
+            datos_a_guardar = asdict(config)
             
-        except Exception as e:
-            logger.exception(f"Error al preparar los datos para guardar: {e}")
-            raise
+        elif isinstance(config, dict):
+            datos_a_guardar = config
         
-        # Serializa el archivo
-        try:
-            with open(archivo_settings, "w", encoding="utf-8") as archivo:
-                json.dump(datos_a_guardar, archivo, indent=4, ensure_ascii=False)
-            logger.info(f"Archivo {archivo_settings} creado con éxito.")
-        
-        except Exception as e:
-            logger.exception(f"No se pudo escribir el archivo '{archivo_settings}': {e}")
-            raise
+    except Exception as e:
+        logger.exception(f"Error al preparar los datos para guardar: {e}")
+        raise
+    
+    # Serializa el archivo
+    try:
+        with open(archivo_settings, "w", encoding="utf-8") as archivo:
+            json.dump(datos_a_guardar, archivo, indent=4, ensure_ascii=False)
+        logger.info(f"Archivo {archivo_settings} creado con éxito.")
+    
+    except Exception as e:
+        logger.exception(f"No se pudo escribir el archivo '{archivo_settings}': {e}")
+        raise
     
 def sesion_previa():
     """
@@ -162,6 +159,10 @@ def cargar_configuracion() -> st.Configuracion:
     
     logger.info(f"Datos cargados : {config_cargada}")
     
+    if not config_cargada["Remember"]:
+        vacio = st.Configuracion()
+        return vacio
+    
     # Obtiene los datos que estén guardados en cada una de las claves
     if "Username" in config_cargada:
         datos_usuario.Username = config_cargada["Username"]
@@ -179,6 +180,7 @@ def cargar_configuracion() -> st.Configuracion:
         datos_usuario.BaseUrl = config_cargada["BaseUrl"]
     if "Remember" in config_cargada:
         datos_usuario.Remember = config_cargada["Remember"]
+    
         
     return datos_usuario
 
@@ -187,3 +189,13 @@ def obtener_logs() -> str:
     rutas_app = obtener_ruta_configuracion()
     return rutas_app["FileLogPath"]
         
+def obtener_endpoints() -> json:
+    """Obtiene todos los endpoints o funciones que puede usar la APP"""
+    logger.info("Obteniendo informacion de modulos")
+    try:
+        with open('endpoints.json','r') as archivo:
+            endpoints = json.load(archivo)
+    except FileNotFoundError as e: 
+        logger.error(f"Error al buscar el archivo : {e}")
+    except Exception as e:
+        logger.error(f"Error al leer el archivo : {e}")

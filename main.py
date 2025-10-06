@@ -18,8 +18,6 @@ os.system("cls")
 
 ft.app(target = Login)
 
-# import flet as ft
-
 # def main(page: ft.Page):
 #     page.title = "Navegación con NavigationBar"
 
