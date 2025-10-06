@@ -1,4 +1,5 @@
 import flet as ft
+import config
 from models.settings import Configuracion
 
 def Starting(page: ft.Page, datos : Configuracion):
@@ -17,7 +18,7 @@ def Starting(page: ft.Page, datos : Configuracion):
     Titulo = ft.Text(
         value = f"Administrador de {datos.DeviceName}",
         font_family = "Weight",
-        size = 80,
+        size = 50,
         color = ft.Colors.AMBER_ACCENT_700,
         text_align = ft.TextAlign.CENTER
     )
@@ -111,6 +112,122 @@ def Starting(page: ft.Page, datos : Configuracion):
     #-------------------------------------------- Vista de Mas Funciones -----------------------------------------------
     
     
+    lista_funciones = config.obtener_endpoints()
     
-    page.add(Principal)
-    page.update()
+    Tabla = ft.DataTable(
+        columns = [
+            ft.DataColumn(
+                label=ft.Container(
+                    content=ft.Text(
+                        "Nombre",
+                        text_align=ft.TextAlign.CENTER,
+                        weight=ft.FontWeight.BOLD,
+                        size=18
+                    ),
+                    alignment=ft.alignment.center,
+                    expand=True
+                ), heading_row_alignment= ft.MainAxisAlignment.CENTER
+            ),
+            ft.DataColumn(
+                label=ft.Container(
+                    content=ft.Text(
+                        "Función",
+                        text_align=ft.TextAlign.CENTER,
+                        weight=ft.FontWeight.BOLD,
+                        size=18
+                    ),
+                    alignment=ft.alignment.center,
+                    expand=True
+                ), heading_row_alignment= ft.MainAxisAlignment.CENTER
+            ),
+            ft.DataColumn(
+                label=ft.Container(
+                    content=ft.Text(
+                        "Descripción",
+                        text_align=ft.TextAlign.CENTER,
+                        weight=ft.FontWeight.BOLD,
+                        size=18
+                    ),
+                    alignment=ft.alignment.center,
+                    expand=True
+                ), heading_row_alignment= ft.MainAxisAlignment.CENTER
+            ),
+            ft.DataColumn(
+                label=ft.Container(
+                    content=ft.Text(
+                        "Testing",
+                        text_align=ft.TextAlign.CENTER,
+                        weight=ft.FontWeight.BOLD,
+                        size=18
+                    ),
+                    alignment=ft.alignment.center,
+                    expand=True
+                ), heading_row_alignment= ft.MainAxisAlignment.CENTER
+            ),
+        ],
+        show_bottom_border = True,
+        horizontal_margin = 8
+    )
+
+    for i in range(len(lista_funciones)):
+        disp = lista_funciones[i]['Dispositivos']
+        desc = lista_funciones[i]['Descripcion']
+        nombre = lista_funciones[i]['Nombre']
+        fnc = lista_funciones[i]['Funcion']
+        if not (disp == "ALL" or disp == datos.DeviceName):
+            continue
+        
+        Tabla.rows.append(
+            ft.DataRow(
+                cells=[
+                    ft.DataCell(
+                        ft.Container(
+                            content=ft.Text(str(nombre), text_align=ft.TextAlign.CENTER),
+                            alignment=ft.alignment.center
+                        )
+                    ),
+                    
+                    ft.DataCell(
+                        ft.Container(
+                            content=ft.Text(str(fnc), text_align=ft.TextAlign.CENTER),
+                            alignment=ft.alignment.center
+                        )
+                    ),
+                
+                    ft.DataCell(
+                        ft.Container(
+                            content=ft.Text(str(desc), text_align=ft.TextAlign.CENTER),
+                            alignment=ft.alignment.center
+                        )
+                    ),
+                    
+                    ft.DataCell(
+                        ft.Container(
+                            content=ft.IconButton(
+                                icon = ft.Icons.CONSTRUCTION_ROUNDED,
+                                icon_color = "#46454b",
+                                icon_size = 20,
+                                tooltip = f"Testear {fnc} Ahora",
+                                on_click = None
+                            ),
+                            alignment=ft.alignment.center
+                        )
+                    )
+                ]
+            )
+        )
+
+    Funciones = ft.Container(
+        margin = 10,
+        padding = 24,
+        alignment = ft.alignment.center,
+        width = 1000,
+        content = ft.Column(
+            spacing = 18,
+            horizontal_alignment = ft.CrossAxisAlignment.STRETCH,
+            controls = [Titulo, Tabla]
+        )
+    )
+
+    #page.add(Principal)
+    page.add(Funciones)

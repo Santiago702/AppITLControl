@@ -1,327 +1,392 @@
 [
   {
-    "nombre": "Aceptar billete retenido",
-    "descripcion": "Acepta el billete o moneda que está en espera (escrow).",
-    "dispositivos": "ALL"
+    "Nombre": "Aceptar billete retenido",
+    "Descripcion": "Acepta el billete o moneda que está en espera (escrow).",
+    "Dispositivos": "ALL",
+    "Funcion": "AcceptFromEscrow"
   },
   {
-    "nombre": "Generar acceso",
-    "descripcion": "Obtiene un token de autenticación para usar la API.",
-    "dispositivos": "ALL"
+    "Nombre": "Generar acceso",
+    "Descripcion": "Obtiene un token de autenticación para usar la API.",
+    "Dispositivos": "ALL",
+    "Funcion": "Authenticate"
   },
   {
-    "nombre": "Cancelar billetes retenidos",
-    "descripcion": "Devuelve los billetes almacenados en espera (multi-escrow).",
-    "dispositivos": "ALL"
+    "Nombre": "Cancelar billetes retenidos",
+    "Descripcion": "Devuelve los billetes almacenados en espera (multi-escrow).",
+    "Dispositivos": "ALL",
+    "Funcion": "CancelMultiEscrow"
   },
   {
-    "nombre": "Limpiar niveles de caja",
-    "descripcion": "Borra el registro de billetes/monedas almacenados en la caja.",
-    "dispositivos": "ALL"
+    "Nombre": "Limpiar niveles de caja",
+    "Descripcion": "Borra el registro de billetes/monedas almacenados en la caja.",
+    "Dispositivos": "ALL",
+    "Funcion": "ClearCashboxLevels"
   },
   {
-    "nombre": "Limpiar niveles de billetes",
-    "descripcion": "Borra los niveles de billetes en la caja.",
-    "dispositivos": "ALL"
+    "Nombre": "Limpiar niveles de billetes",
+    "Descripcion": "Borra los niveles de billetes en la caja.",
+    "Dispositivos": "ALL",
+    "Funcion": "ClearNoteCashboxLevels"
   },
   {
-    "nombre": "Confirmar billetes retenidos",
-    "descripcion": "Guarda definitivamente los billetes en espera (multi-escrow).",
-    "dispositivos": "ALL"
+    "Nombre": "Confirmar billetes retenidos",
+    "Descripcion": "Guarda definitivamente los billetes en espera (multi-escrow).",
+    "Dispositivos": "ALL",
+    "Funcion": "CommitMultiEscrow"
   },
   {
-    "nombre": "Error de lectura COM",
-    "descripcion": "Consulta errores del puerto de comunicación.",
-    "dispositivos": "ALL"
+    "Nombre": "Error de lectura COM",
+    "Descripcion": "Consulta errores del puerto de comunicación.",
+    "Dispositivos": "ALL",
+    "Funcion": "comPortReadError"
   },
   {
-    "nombre": "Desconectar dispositivo",
-    "descripcion": "Cierra la comunicación con el dispositivo.",
-    "dispositivos": "ALL"
+    "Nombre": "Desconectar dispositivo",
+    "Descripcion": "Cierra la comunicación con el dispositivo.",
+    "Dispositivos": "ALL",
+    "Funcion": "DisconnectDevice"
   },
   {
-    "nombre": "Deshabilitar aceptación",
-    "descripcion": "Impide que el dispositivo acepte billetes o monedas.",
-    "dispositivos": "ALL"
+    "Nombre": "Deshabilitar aceptación",
+    "Descripcion": "Impide que el dispositivo acepte billetes o monedas.",
+    "Dispositivos": "ALL",
+    "Funcion": "DisableAcceptor"
   },
   {
-    "nombre": "Deshabilitar pago",
-    "descripcion": "Desactiva la función de pago o devolución de dinero.",
-    "dispositivos": "ALL"
+    "Nombre": "Deshabilitar pago",
+    "Descripcion": "Desactiva la función de pago o devolución de dinero.",
+    "Dispositivos": "ALL",
+    "Funcion": "DisablePayout"
   },
   {
-    "nombre": "Entregar monto solicitado",
-    "descripcion": "Ordena al dispositivo entregar una cantidad específica de dinero.",
-    "dispositivos": "ALL"
+    "Nombre": "Entregar monto solicitado",
+    "Descripcion": "Ordena al dispositivo entregar una cantidad específica de dinero.",
+    "Dispositivos": "ALL",
+    "Funcion": "DispenseValue"
   },
   {
-    "nombre": "Habilitar aceptación",
-    "descripcion": "Permite que el dispositivo acepte billetes o monedas.",
-    "dispositivos": "ALL"
+    "Nombre": "Habilitar aceptación",
+    "Descripcion": "Permite que el dispositivo acepte billetes o monedas.",
+    "Dispositivos": "ALL",
+    "Funcion": "EnableAcceptor"
   },
   {
-    "nombre": "Activar mecanismo de monedas",
-    "descripcion": "Activa el módulo de monedas o alimentador si está disponible.",
-    "dispositivos": "SCS"
+    "Nombre": "Activar mecanismo de monedas",
+    "Descripcion": "Activa el módulo de monedas o alimentador si está disponible.",
+    "Dispositivos": "SCS",
+    "Funcion": "EnableCoinMechOrFeeder"
   },
   {
-    "nombre": "Habilitar pago",
-    "descripcion": "Activa la función de pago o devolución de dinero.",
-    "dispositivos": "ALL"
+    "Nombre": "Habilitar pago",
+    "Descripcion": "Activa la función de pago o devolución de dinero.",
+    "Dispositivos": "ALL",
+    "Funcion": "EnablePayout"
   },
   {
-    "nombre": "Activar módulo de pago",
-    "descripcion": "Activa un módulo específico de payout o dispensador.",
-    "dispositivos": "ALL"
+    "Nombre": "Activar módulo de pago",
+    "Descripcion": "Activa un módulo específico de payout o dispensador.",
+    "Dispositivos": "ALL",
+    "Funcion": "EnablePayoutDevice"
   },
   {
-    "nombre": "Consultar niveles",
-    "descripcion": "Muestra los niveles actuales de billetes o monedas almacenadas.",
-    "dispositivos": "ALL"
+    "Nombre": "Consultar niveles",
+    "Descripcion": "Muestra los niveles actuales de billetes o monedas almacenadas.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetAllLevels"
   },
   {
-    "nombre": "Obtener datos de código",
-    "descripcion": "Obtiene el último código de barras leído.",
-    "dispositivos": "SCS"
+    "Nombre": "Obtener datos de código",
+    "Descripcion": "Obtiene el último código de barras leído.",
+    "Dispositivos": "SCS",
+    "Funcion": "GetBarcodeData"
   },
   {
-    "nombre": "Ver configuración del lector",
-    "descripcion": "Muestra la configuración actual del lector de códigos.",
-    "dispositivos": "SCS"
+    "Nombre": "Ver configuración del lector",
+    "Descripcion": "Muestra la configuración actual del lector de códigos.",
+    "Dispositivos": "SCS",
+    "Funcion": "GetBarcodeReaderConfiguration"
   },
   {
-    "nombre": "Ver niveles de caja",
-    "descripcion": "Consulta los niveles actuales de la caja (cantidad por denominación).",
-    "dispositivos": "ALL"
+    "Nombre": "Ver niveles de caja",
+    "Descripcion": "Consulta los niveles actuales de la caja (cantidad por denominación).",
+    "Dispositivos": "ALL",
+    "Funcion": "GetCashboxLevels"
   },
   {
-    "nombre": "Consultar aceptación de monedas",
-    "descripcion": "Devuelve qué monedas acepta el dispositivo.",
-    "dispositivos": "SCS"
+    "Nombre": "Consultar aceptación de monedas",
+    "Descripcion": "Devuelve qué monedas acepta el dispositivo.",
+    "Dispositivos": "SCS",
+    "Funcion": "GetCoinAcceptance"
   },
   {
-    "nombre": "Obtener información completa",
-    "descripcion": "Muestra toda la información del dispositivo (serie, firmware, estado, etc.).",
-    "dispositivos": "ALL"
+    "Nombre": "Obtener información completa",
+    "Descripcion": "Muestra toda la información del dispositivo (serie, firmware, estado, etc.).",
+    "Dispositivos": "ALL",
+    "Funcion": "GetCompleteCashDevice"
   },
   {
-    "nombre": "Ver contadores",
-    "descripcion": "Muestra el número de billetes aceptados, rechazados o dispensados.",
-    "dispositivos": "ALL"
+    "Nombre": "Ver contadores",
+    "Descripcion": "Muestra el número de billetes aceptados, rechazados o dispensados.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetCounters"
   },
   {
-    "nombre": "Ver asignación de billetes",
-    "descripcion": "Muestra cómo están asignadas las denominaciones (canal, reciclador, etc.).",
-    "dispositivos": "ALL"
+    "Nombre": "Ver asignación de billetes",
+    "Descripcion": "Muestra cómo están asignadas las denominaciones (canal, reciclador, etc.).",
+    "Dispositivos": "ALL",
+    "Funcion": "GetCurrencyAssignment"
   },
   {
-    "nombre": "Consultar estado del dispositivo",
-    "descripcion": "Muestra el estado actual del dispositivo.",
-    "dispositivos": "ALL"
+    "Nombre": "Consultar estado del dispositivo",
+    "Descripcion": "Muestra el estado actual del dispositivo.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetDeviceStatus"
   },
   {
-    "nombre": "Ver estado de descarga",
-    "descripcion": "Consulta el estado de una descarga en curso.",
-    "dispositivos": "ALL"
+    "Nombre": "Ver estado de descarga",
+    "Descripcion": "Consulta el estado de una descarga en curso.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetDownloadStatus"
   },
   {
-    "nombre": "Consultar código de error",
-    "descripcion": "Devuelve códigos de error globales del dispositivo.",
-    "dispositivos": "ALL"
+    "Nombre": "Consultar código de error",
+    "Descripcion": "Devuelve códigos de error globales del dispositivo.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetGlobalErrorCode"
   },
   {
-    "nombre": "Ver opciones del hopper",
-    "descripcion": "Muestra las configuraciones del módulo de monedas (hopper).",
-    "dispositivos": "SCS"
+    "Nombre": "Ver opciones del hopper",
+    "Descripcion": "Muestra las configuraciones del módulo de monedas (hopper).",
+    "Dispositivos": "SCS",
+    "Funcion": "GetHopperOptions"
   },
   {
-    "nombre": "Ver último código de rechazo",
-    "descripcion": "Indica por qué se rechazó el último billete.",
-    "dispositivos": "ALL"
+    "Nombre": "Ver último código de rechazo",
+    "Descripcion": "Indica por qué se rechazó el último billete.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetLastRejectCode"
   },
   {
-    "nombre": "Ver estado del elevador",
-    "descripcion": "Consulta el estado del elevador interno (si aplica).",
-    "dispositivos": "NV4000"
+    "Nombre": "Ver estado del elevador",
+    "Descripcion": "Consulta el estado del elevador interno (si aplica).",
+    "Dispositivos": "NV4000",
+    "Funcion": "GetLifterStatus"
   },
   {
-    "nombre": "Consultar capacidad de retención",
-    "descripcion": "Indica cuántos billetes pueden mantenerse en multi-escrow.",
-    "dispositivos": "ALL"
+    "Nombre": "Consultar capacidad de retención",
+    "Descripcion": "Indica cuántos billetes pueden mantenerse en multi-escrow.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetMultiEscrowSize"
   },
   {
-    "nombre": "Ver valor retenido",
-    "descripcion": "Muestra la cantidad y denominaciones retenidas en multi-escrow.",
-    "dispositivos": "ALL"
+    "Nombre": "Ver valor retenido",
+    "Descripcion": "Muestra la cantidad y denominaciones retenidas en multi-escrow.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetMultiEscrowValue"
   },
   {
-    "nombre": "Ver niveles de billetes en caja",
-    "descripcion": "Muestra los niveles de billetes dentro de la caja.",
-    "dispositivos": "ALL"
+    "Nombre": "Ver niveles de billetes en caja",
+    "Descripcion": "Muestra los niveles de billetes dentro de la caja.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetNoteCashboxLevels"
   },
   {
-    "nombre": "Consultar cantidad de pagos",
-    "descripcion": "Devuelve el número total de operaciones de pago realizadas.",
-    "dispositivos": "ALL"
+    "Nombre": "Consultar cantidad de pagos",
+    "Descripcion": "Devuelve el número total de operaciones de pago realizadas.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetPayoutCount"
   },
   {
-    "nombre": "Consultar modo de recarga",
-    "descripcion": "Muestra el modo actual del cassette de recarga.",
-    "dispositivos": "NV4000"
+    "Nombre": "Consultar modo de recarga",
+    "Descripcion": "Muestra el modo actual del cassette de recarga.",
+    "Dispositivos": "NV4000",
+    "Funcion": "GetRCMode"
   },
   {
-    "nombre": "Ver información de servicio",
-    "descripcion": "Muestra información general del servicio y mantenimiento.",
-    "dispositivos": "ALL"
+    "Nombre": "Ver información de servicio",
+    "Descripcion": "Muestra información general del servicio y mantenimiento.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetServiceInformation"
   },
   {
-    "nombre": "Información del módulo",
-    "descripcion": "Devuelve datos de servicio de un módulo específico.",
-    "dispositivos": "ALL"
+    "Nombre": "Información del módulo",
+    "Descripcion": "Devuelve datos de servicio de un módulo específico.",
+    "Dispositivos": "ALL",
+    "Funcion": "GetServiceInformationForModule"
   },
   {
-    "nombre": "Ver datos de reconocimiento",
-    "descripcion": "Muestra datos sobre los billetes y monedas reconocidos (dataset).",
-    "dispositivos": "ALL"
+    "Nombre": "Ver datos de reconocimiento",
+    "Descripcion": "Muestra datos sobre los billetes y monedas reconocidos (dataset).",
+    "Dispositivos": "ALL",
+    "Funcion": "GetSmartCurrencyData"
   },
   {
-    "nombre": "Ver rutas del clasificador",
-    "descripcion": "Muestra la configuración actual del clasificador de billetes.",
-    "dispositivos": "SCS"
+    "Nombre": "Ver rutas del clasificador",
+    "Descripcion": "Muestra la configuración actual del clasificador de billetes.",
+    "Dispositivos": "SCS",
+    "Funcion": "GetSorterRouteAssignment"
   },
   {
-    "nombre": "Detener pago",
-    "descripcion": "Detiene cualquier operación de pago en curso.",
-    "dispositivos": "ALL"
+    "Nombre": "Detener pago",
+    "Descripcion": "Detiene cualquier operación de pago en curso.",
+    "Dispositivos": "ALL",
+    "Funcion": "HaltPayout"
   },
   {
-    "nombre": "Registrar datos técnicos",
-    "descripcion": "Activa o desactiva el registro de datos internos del dispositivo.",
-    "dispositivos": "ALL"
+    "Nombre": "Registrar datos técnicos",
+    "Descripcion": "Activa o desactiva el registro de datos internos del dispositivo.",
+    "Dispositivos": "ALL",
+    "Funcion": "LogRawPackets"
   },
   {
-    "nombre": "Abrir conexión",
-    "descripcion": "Establece la comunicación inicial con el dispositivo.",
-    "dispositivos": "ALL"
+    "Nombre": "Abrir conexión",
+    "Descripcion": "Establece la comunicación inicial con el dispositivo.",
+    "Dispositivos": "ALL",
+    "Funcion": "OpenConnection"
   },
   {
-    "nombre": "Modo de recarga",
-    "descripcion": "Activa o desactiva el modo de rellenado para mantenimiento.",
-    "dispositivos": "ALL"
+    "Nombre": "Modo de recarga",
+    "Descripcion": "Activa o desactiva el modo de rellenado para mantenimiento.",
+    "Dispositivos": "ALL",
+    "Funcion": "RefillMode"
   },
   {
-    "nombre": "Reponer efectivo",
-    "descripcion": "Mueve billetes del cassette de recarga hacia los módulos de pago.",
-    "dispositivos": "NV4000"
+    "Nombre": "Reponer efectivo",
+    "Descripcion": "Mueve billetes del cassette de recarga hacia los módulos de pago.",
+    "Dispositivos": "NV4000",
+    "Funcion": "Replenish"
   },
   {
-    "nombre": "Reiniciar dispositivo",
-    "descripcion": "Reinicia el dispositivo con sus configuraciones de fábrica.",
-    "dispositivos": "ALL"
+    "Nombre": "Reiniciar dispositivo",
+    "Descripcion": "Reinicia el dispositivo con sus configuraciones de fábrica.",
+    "Dispositivos": "ALL",
+    "Funcion": "ResetDevice"
   },
   {
-    "nombre": "Devolver billete retenido",
-    "descripcion": "Devuelve el billete o moneda en espera (escrow).",
-    "dispositivos": "ALL"
+    "Nombre": "Devolver billete retenido",
+    "Descripcion": "Devuelve el billete o moneda en espera (escrow).",
+    "Dispositivos": "ALL",
+    "Funcion": "ReturnFromEscrow"
   },
   {
-    "nombre": "Enviar comando personalizado",
-    "descripcion": "Envía un comando técnico personalizado al dispositivo.",
-    "dispositivos": "ALL"
+    "Nombre": "Enviar comando personalizado",
+    "Descripcion": "Envía un comando técnico personalizado al dispositivo.",
+    "Dispositivos": "ALL",
+    "Funcion": "SendCustomCommand"
   },
   {
-    "nombre": "Aceptar automáticamente",
-    "descripcion": "Activa o desactiva la aceptación automática de billetes en espera.",
-    "dispositivos": "ALL"
+    "Nombre": "Aceptar automáticamente",
+    "Descripcion": "Activa o desactiva la aceptación automática de billetes en espera.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetAutoAccept"
   },
   {
-    "nombre": "Configurar lector de códigos",
-    "descripcion": "Ajusta las opciones del lector de códigos de barras o QR.",
-    "dispositivos": "SCS"
+    "Nombre": "Configurar lector de códigos",
+    "Descripcion": "Ajusta las opciones del lector de códigos de barras o QR.",
+    "Dispositivos": "SCS",
+    "Funcion": "SetBarcodeReaderConfiguration"
   },
   {
-    "nombre": "Configurar niveles de caja",
-    "descripcion": "Actualiza los niveles de billetes o monedas en la caja.",
-    "dispositivos": "ALL"
+    "Nombre": "Configurar niveles de caja",
+    "Descripcion": "Actualiza los niveles de billetes o monedas en la caja.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetCashboxLevels"
   },
   {
-    "nombre": "Límite de pago por caja",
-    "descripcion": "Define la cantidad máxima de billetes que puede pagar cada reciclador.",
-    "dispositivos": "ALL"
+    "Nombre": "Límite de pago por caja",
+    "Descripcion": "Define la cantidad máxima de billetes que puede pagar cada reciclador.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetCashboxPayoutLimit"
   },
   {
-    "nombre": "Inhabilitar denominaciones",
-    "descripcion": "Define qué valores de billetes no serán aceptados.",
-    "dispositivos": "SCS"
+    "Nombre": "Inhabilitar denominaciones",
+    "Descripcion": "Define qué valores de billetes no serán aceptados.",
+    "Dispositivos": "SCS",
+    "Funcion": "SetDenominationInhibits"
   },
   {
-    "nombre": "Establecer nivel de billetes",
-    "descripcion": "Ajusta manualmente el nivel de una denominación específica.",
-    "dispositivos": "ALL"
+    "Nombre": "Establecer nivel de billetes",
+    "Descripcion": "Ajusta manualmente el nivel de una denominación específica.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetDenominationLevel"
   },
   {
-    "nombre": "Configurar ruta de billetes",
-    "descripcion": "Asigna la ruta (payout o caja) a una denominación.",
-    "dispositivos": "ALL"
+    "Nombre": "Configurar ruta de billetes",
+    "Descripcion": "Asigna la ruta (payout o caja) a una denominación.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetDenominationRoute"
   },
   {
-    "nombre": "Configurar hopper",
-    "descripcion": "Ajusta opciones internas del módulo de monedas (hopper).",
-    "dispositivos": "SCS"
+    "Nombre": "Configurar hopper",
+    "Descripcion": "Ajusta opciones internas del módulo de monedas (hopper).",
+    "Dispositivos": "SCS",
+    "Funcion": "SetHopperOptions"
   },
   {
-    "nombre": "Definir capacidad de retención",
-    "descripcion": "Configura cuántos billetes pueden mantenerse en espera.",
-    "dispositivos": "ALL"
+    "Nombre": "Definir capacidad de retención",
+    "Descripcion": "Configura cuántos billetes pueden mantenerse en espera.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetMultiEscrowSize"
   },
   {
-    "nombre": "Establecer contador de rechazos",
-    "descripcion": "Configura el conteo de billetes rechazados.",
-    "dispositivos": "ALL"
+    "Nombre": "Establecer contador de rechazos",
+    "Descripcion": "Configura el conteo de billetes rechazados.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetNoPayinCount"
   },
   {
-    "nombre": "Definir límite de pago",
-    "descripcion": "Establece el máximo de monedas o billetes que puede pagar el dispositivo.",
-    "dispositivos": "ALL"
+    "Nombre": "Definir límite de pago",
+    "Descripcion": "Establece el máximo de monedas o billetes que puede pagar el dispositivo.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetPayoutLimit"
   },
   {
-    "nombre": "Reiniciar mantenimiento",
-    "descripcion": "Reinicia la información de mantenimiento del dispositivo.",
-    "dispositivos": "ALL"
+    "Nombre": "Reiniciar mantenimiento",
+    "Descripcion": "Reinicia la información de mantenimiento del dispositivo.",
+    "Dispositivos": "ALL",
+    "Funcion": "SetServiceInformationMaintenanceReset"
   },
   {
-    "nombre": "Configurar rutas del clasificador",
-    "descripcion": "Configura la ruta de billetes en el clasificador.",
-    "dispositivos": "SCS"
+    "Nombre": "Configurar rutas del clasificador",
+    "Descripcion": "Configura la ruta de billetes en el clasificador.",
+    "Dispositivos": "SCS",
+    "Funcion": "SetSorterRoute"
   },
   {
-    "nombre": "Vaciado inteligente",
-    "descripcion": "Vacía automáticamente los módulos según las reglas del sistema.",
-    "dispositivos": "ALL"
+    "Nombre": "Vaciado inteligente",
+    "Descripcion": "Vacía automáticamente los módulos según las reglas del sistema.",
+    "Dispositivos": "ALL",
+    "Funcion": "SmartEmpty"
   },
   {
-    "nombre": "Iniciar dispositivo",
-    "descripcion": "Arranca el servicio interno que mantiene el dispositivo activo.",
-    "dispositivos": "ALL"
+    "Nombre": "Iniciar dispositivo",
+    "Descripcion": "Arranca el servicio interno que mantiene el dispositivo activo.",
+    "Dispositivos": "ALL",
+    "Funcion": "StartDevice"
   },
   {
-    "nombre": "Iniciar descarga",
-    "descripcion": "Comienza la descarga de un archivo o actualización.",
-    "dispositivos": "ALL"
+    "Nombre": "Iniciar descarga",
+    "Descripcion": "Comienza la descarga de un archivo o actualización.",
+    "Dispositivos": "ALL",
+    "Funcion": "StartDownload"
   },
   {
-    "nombre": "Detener dispositivo",
-    "descripcion": "Detiene el servicio interno sin desconectarlo.",
-    "dispositivos": "ALL"
+    "Nombre": "Detener dispositivo",
+    "Descripcion": "Detiene el servicio interno sin desconectarlo.",
+    "Dispositivos": "ALL",
+    "Funcion": "StopDevice"
   },
   {
-    "nombre": "Actualizar credenciales",
-    "descripcion": "Cambia el usuario y la contraseña de autenticación.",
-    "dispositivos": "ALL"
+    "Nombre": "Actualizar credenciales",
+    "Descripcion": "Cambia el usuario y la contraseña de autenticación.",
+    "Dispositivos": "ALL",
+    "Funcion": "UpdateCredentials"
   },
   {
-    "nombre": "Actualizar base de billetes",
-    "descripcion": "Actualiza la base de datos de billetes o monedas reconocidos.",
-    "dispositivos": "ALL"
+    "Nombre": "Actualizar base de billetes",
+    "Descripcion": "Actualiza la base de datos de billetes o monedas reconocidos.",
+    "Dispositivos": "ALL",
+    "Funcion": "UpdateSmartCurrencyDataset"
   }
 ]

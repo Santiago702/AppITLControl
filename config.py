@@ -184,18 +184,23 @@ def cargar_configuracion() -> st.Configuracion:
         
     return datos_usuario
 
+# Obtiene la ruta de Logs donde se guardarán las peticiones y respuestas de la API
 def obtener_logs() -> str:
     "Retorna la ruta de Logs donde se correrá la API"
     rutas_app = obtener_ruta_configuracion()
     return rutas_app["FileLogPath"]
-        
-def obtener_endpoints() -> json:
+
+#Obtenemos todas las funciones y descripciones de los endpoints
+def obtener_endpoints():
     """Obtiene todos los endpoints o funciones que puede usar la APP"""
     logger.info("Obteniendo informacion de modulos")
     try:
-        with open('endpoints.json','r') as archivo:
+        with open('endpoints.json','r' , encoding='utf-8') as archivo:
             endpoints = json.load(archivo)
+        return endpoints
     except FileNotFoundError as e: 
         logger.error(f"Error al buscar el archivo : {e}")
+        return None
     except Exception as e:
         logger.error(f"Error al leer el archivo : {e}")
+        return None
