@@ -3,6 +3,23 @@ import config
 from models.settings import Configuracion
 
 def Starting(page: ft.Page, datos : Configuracion):
+    
+    #------------------------------------------------------ Función de cambiar NavBar ------------------------------------------
+    
+    def cambiar_vista(e):
+        indice_seleccionado = page.navigation_bar.selected_index
+        
+        match indice_seleccionado:
+            case 0:
+                page.clean()
+                page.add(Principal)
+            case 1:
+                page.clean()
+                page.add(Funciones)
+            case 2:
+                pass
+        page.update()
+        
     page.fonts = {
         "Home" : "fonts/Home Office.otf",
         "Weight" : "fonts/Weight.ttf"
@@ -24,7 +41,7 @@ def Starting(page: ft.Page, datos : Configuracion):
     )
     
     # Usa la propiedad de la página para la barra de navegación
-    page.navigation_bar = ft.NavigationBar(
+    Navegacion = ft.NavigationBar(
         destinations = [
             ft.NavigationBarDestination(icon = ft.Icons.HOME_MAX, label = "Inicio"),
             ft.NavigationBarDestination(icon = ft.Icons.LIST, label = "Más funciones"),
@@ -34,6 +51,8 @@ def Starting(page: ft.Page, datos : Configuracion):
         adaptive = True
     )
     
+    page.navigation_bar = Navegacion
+    page.navigation_bar.on_change = cambiar_vista
     #----------------------------------------------------- Vista Principal -----------------------------------------------------
     
     # Botones
@@ -229,5 +248,7 @@ def Starting(page: ft.Page, datos : Configuracion):
         )
     )
 
-    #page.add(Principal)
-    page.add(Funciones)
+    # ------------------------------------------------------ Vista de Configuraciones ------------------------------------------
+    
+        
+    page.add(Principal)
